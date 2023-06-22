@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Home</title>
+</head>
+<body>
+    <h1>User Home</h1>
+    <h2>Events</h2>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Event_Type</th>
+            <th>Max_Seats</th>
+            <th>Booking_Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for event in events %}
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.event_type }}</td>
+                <td>{{ event.max_seats }}</td>
+                <td>{% if event.is_booked_by_user %}Booked{% else %}Open{% endif %}</td>
+                <td>
+                    {% if not event.is_booked_by_user and event.booking_open %}
+                        <form action="/book_event/{{ event.id }}/" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" value="Book Ticket">
+                        </form>
+                    {% else %}Already Booked
+                    {% endif %}
+
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Booked Events</h2>
+    <ul>
+        {% for ticket in tickets %}
+            <li>
+                <h3>{{ ticket.event.title }}</h3>
+                <p>Booking Date: {{ ticket.booking_date }}</p>
+                <a href="/ticket/{{ ticket.id }}/">View Ticket</a>
+            </li>
+        {% empty %}
+            <li>No booked events.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/logout/">Logout</a>
+</body>
+</html>

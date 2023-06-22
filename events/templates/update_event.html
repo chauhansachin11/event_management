@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Event</title>
+</head>
+<body>
+    <h1>Update Event</h1>
+    <!-- Event update form -->
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{ event.title }}" required><br><br>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required>{{ event.description }}</textarea><br><br>
+        <label for="event_type">Event Type:</label>
+        <select id="event_type" name="event_type" required>
+            <option value="online" {% if event.event_type == 'online' %}selected{% endif %}>Online</option>
+            <option value="offline" {% if event.event_type == 'offline' %}selected{% endif %}>Offline</option>
+        </select><br><br>
+        <label for="max_seats">Max Seats:</label>
+        <input type="number" id="max_seats" name="max_seats" value="{{ event.max_seats }}" required><br><br>
+        <label for="booking_start_date">Booking Start Date:</label>
+        <input type="datetime-local" id="booking_start_date" name="booking_start_date" value="{{ event.booking_start_date|date:'Y-m-d\TH:i' }}" required><br><br>
+        <label for="booking_end_date">Booking End Date:</label>
+        <input type="datetime-local" id="booking_end_date" name="booking_end_date" value="{{ event.booking_end_date|date:'Y-m-d\TH:i' }}" required><br><br>
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>

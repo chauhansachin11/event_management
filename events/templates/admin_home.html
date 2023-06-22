@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Home</title>
+</head>
+<body>
+    <h1>Admin Home</h1>
+    <h2>Events</h2>
+    <ul>
+        {% for event in events %}
+            <li>
+                <h3>{{ event.title }}</h3>
+                <p>{{ event.description }}</p>
+                <p>Event Type: {{ event.event_type }}</p>
+                <p>Max Seats: {{ event.max_seats }}</p>
+                <p>Booking Start Date: {{ event.booking_start_date}}</p>
+                <p>Booking End Date: {{ event.booking_end_date}}</p>
+                {% if event.booking_open %}
+                    <p>Booking: Open</p>
+                {% else %}
+                    <p>Booking: Closed</p>
+                {% endif %}
+                <a href="/admin/update_event/{{ event.id }}/">Update Event</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/admin/create_event/">Create Event</a>
+</body>
+</html>

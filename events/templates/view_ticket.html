@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Ticket</title>
+</head>
+<body>
+    <h1>View Ticket</h1>
+
+    <h2>Ticket Details</h2>
+    <p><strong>Event Title:</strong> {{ ticket.event.title }}</p>
+    <p><strong>Booking Date:</strong> {{ ticket.booking_date }}</p>
+    <p><strong>User Name:</strong> {{ ticket.user.get_full_name }}</p>
+    <p><strong>User Email:</strong> {{ ticket.user.email }}</p>
+
+    <a href="/user_home/">Back to User Home</a>
+</body>
+</html>
