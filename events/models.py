@@ -28,3 +28,8 @@ class Ticket(models.Model):
 
     def __str__(self):
         return f'{self.user.username} - {self.event.title}'
+
+class Item(models.Model):
+    name = models.CharField(max_length=25)
+    created = models.DateTimeField(auto_now_add=True)
+

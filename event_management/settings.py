@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'events'
+    'events',
+    'rest_framework',
+    'students'
 ]
 
 MIDDLEWARE = [
@@ -79,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'event_management',  #your database name
         'USER': 'postgres',           #your database username
-        'PASSWORD': 'Password1#',       #Your database password
+        'PASSWORD': 'admin',       #Your database password
         'HOST': 'localhost',
         'PORT': '5432',
     }
