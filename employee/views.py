@@ -1,8 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-from .models import Employee
-from .serializer import EmployeeSerializer
+from rest_framework import status, viewsets
+from .models import Employee, Department
+from .serializer import EmployeeSerializer, DepartmentSerializer
 
 # Class Based API View(using rest_framework.views import APIView)
 
@@ -45,3 +45,6 @@ class EmployeeAPI(APIView):
         return Response({"msg": "Data deleted"}, status=status.HTTP_200_OK)
 
 
+class DepartmentAPI(viewsets.ModelViewSet):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer

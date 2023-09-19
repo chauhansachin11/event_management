@@ -7,3 +7,9 @@ class Employee(models.Model):
     emp_id = models.IntegerField()
     salary = models.FloatField()
     city = models.CharField(max_length=100)
+
+
+class Department(models.Model):
+    name = models.CharField(max_length=100)
+    manager = models.CharField(max_length=100)
+
