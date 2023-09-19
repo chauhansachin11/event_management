@@ -4,9 +4,10 @@ from .models import Student
 from .seriallizer import StudentSerializer
 
 
-# Create your views here.
+# Function Based API View(using rest_framework.decorators import api_view)
+
 @api_view(['GET','POST','PUT','PATCH','DELETE'])
-def studentApi(request,pk=None):
+def student(request,pk=None):
     if(request.method == 'GET'):
         if(pk != None):
             student = Student.objects.get(id=pk)

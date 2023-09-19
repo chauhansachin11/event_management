@@ -32,6 +32,6 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('admin/', admin.site.urls),
-    path('my_api/', include('my_api.urls')),
     path('student/', include('students.urls')),
+    path("employee/",include('employee.urls')),
 ]

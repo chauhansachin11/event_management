@@ -3,7 +3,7 @@ from . import views
 
 
 urlpatterns = [
-    path('',views.studentApi),
-    path('<str:pk>',views.studentApi),
+    path('',views.student),
+    path('<str:pk>',views.student),
 
 ]
